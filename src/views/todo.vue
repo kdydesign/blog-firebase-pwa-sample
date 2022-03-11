@@ -9,10 +9,10 @@
   <div class="q-pa-xl">
     <div class="row justify-center q-gutter-md">
       <q-intersection
-          v-for="index in 60"
-          :key="index"
-          transition="scale"
-          class="example-item"
+        v-for="index in 60"
+        :key="index"
+        transition="scale"
+        class="example-item"
       >
         <todo-list/>
       </q-intersection>
@@ -22,8 +22,9 @@
 
 <script>
 import TodoList from '@/components/todo-list'
+
 export default {
-  name: 'todo',
+  name: 'to-do',
   components: { TodoList }
 }
 </script>

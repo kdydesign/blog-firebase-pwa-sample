@@ -1,15 +1,19 @@
 <template>
   <div id="app">
-    <layout/>
+    <layout-view/>
   </div>
 </template>
 
 <script>
-import Layout from '@/layouts/layout'
+import UpdateMixins from '@/mixins/update'
+
+import LayoutView from '@/layouts/layout'
+
 export default {
   name: 'App',
+  mixins: [UpdateMixins],
   components: {
-    Layout
+    LayoutView
   }
 }
 </script>

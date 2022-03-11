@@ -3,6 +3,10 @@ import App from './App.vue'
 import router from './router'
 import Quasar from 'quasar'
 
+import '@/plugins'
+
+import './register-service-worker'
+
 import 'quasar/dist/quasar.min.css'
 import '@quasar/extras/material-icons/material-icons.css'
 import '@quasar/extras/fontawesome-v5/fontawesome-v5.css'
@@ -21,5 +25,5 @@ Vue.use(Quasar, {
 })
 new Vue({
   router,
-  render: h => h(App),
+  render: h => h(App)
 }).$mount('#app')
