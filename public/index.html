@@ -1,17 +1,26 @@
 <!DOCTYPE html>
-<html lang="">
-  <head>
+<html>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+    <script>
+        if ('serviceWorker' in navigator) {
+            // Register a service worker hosted at the root of the
+            // site using the default scope.
+            navigator.serviceWorker.register('/service-worker.js').then(function (registration) {
+                console.log('Service worker registration succeeded:', registration)
+            }, /*catch*/ function (error) {
+                console.log('Service worker registration failed:', error)
+            })
+        } else {
+            console.log('Service workers are not supported.')
+        }
+    </script>
+</head>
+<body>
+<div id="app"></div>
+</body>
 </html>
