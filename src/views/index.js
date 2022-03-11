@@ -4,5 +4,5 @@
  *
  */
 export default require.context('./', true, /^\.\/.*\.vue$/)
-	.keys()
-	.map(view => view.slice(2))
+  .keys()
+  .map(view => view.slice(2))
