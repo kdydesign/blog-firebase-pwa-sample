@@ -23,7 +23,6 @@ export default {
   methods: {
     test () {
       this.$router.push('/add-todo')
-      console.log('22')
     }
   }
 }

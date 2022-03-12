@@ -4,10 +4,6 @@ module.exports = defineConfig({
   pwa: {
     name: 'todo-tutorial',
     short_name: 'todo-tutorial',
-    themeColor: '#0a4def',
-    workboxPluginMode: 'InjectManifest',
-    workboxOptions: {
-      swSrc: 'src/service-worker.js'
-    }
+    themeColor: '#0a4def'
   }
 })
