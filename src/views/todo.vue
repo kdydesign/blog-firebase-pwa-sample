@@ -7,14 +7,14 @@
 
 <template>
   <div class="q-pa-xl">
-    <div class="row justify-center q-gutter-md">
+    <div class="row q-col-gutter-md">
       <q-intersection
-        v-for="index in 60"
+        v-for="index in 6"
         :key="index"
         transition="scale"
-        class="example-item"
+        class="q-col-4 example-item"
       >
-        <todo-list/>
+        <todo-list />
       </q-intersection>
     </div>
   </div>
@@ -24,13 +24,13 @@
 import TodoList from '@/components/todo-list'
 
 export default {
-  name: 'to-do',
+  name: 'ToDo',
   components: { TodoList }
 }
 </script>
 
 <style lang="sass" scoped>
 .example-item
-  height: 230px
+  height: 200px
   width: 200px
 </style>

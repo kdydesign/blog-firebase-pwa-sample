@@ -6,20 +6,23 @@
 -->
 
 <template>
-  <q-card class="q-ma-sm"
-          @click="test">
+  <q-card
+    class="q-ma-sm"
+    @click="test"
+  >
     <img src="https://cdn.quasar.dev/img/mountains.jpg">
 
     <q-card-section>
-      <div class="text-h6">Card</div>
-      <div class="text-subtitle2">by John Doe</div>
+      <div class="text-h6">
+        날짜
+      </div>
     </q-card-section>
   </q-card>
 </template>
 
 <script>
 export default {
-  name: 'todo-list',
+  name: 'TodoList',
   methods: {
     test () {
       this.$router.push('/add-todo')
