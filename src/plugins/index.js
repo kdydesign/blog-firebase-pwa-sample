@@ -1,13 +1,9 @@
 import Vue from 'vue'
 
-import Firebase from 'firebase/app'
+import { initializeApp } from 'firebase/app'
 
 import FirebaseConfig from '../../firebase.config'
 
-Firebase.initializeApp(FirebaseConfig)
+const App = initializeApp(FirebaseConfig)
 
-Vue.prototype.$firebase = Firebase
-
-export {
-  Firebase
-}
+Vue.prototype.$firebase = App

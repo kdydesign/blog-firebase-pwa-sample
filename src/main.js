@@ -18,11 +18,13 @@ import '@quasar/extras/animate/fadeIn.css'
 import '@quasar/extras/animate/fadeOut.css'
 
 Vue.config.productionTip = false
+
 Vue.use(Quasar, {
   config: {
     framework: 'all'
   }
 })
+
 new Vue({
   router,
   render: h => h(App)
