@@ -8,23 +8,36 @@
 <template>
   <q-card
     class="q-ma-sm"
-    @click="test"
+    @click="getTodo"
   >
     <img src="https://cdn.quasar.dev/img/mountains.jpg">
 
     <q-card-section>
-      <div class="text-h6">
-        날짜
+      <div class="text-subtitle2">
+        {{ title }}
       </div>
     </q-card-section>
   </q-card>
 </template>
 
 <script>
+import { createNamespacedHelpers } from 'vuex'
+
+const todoStoreHelper = createNamespacedHelpers('todoStore')
+
 export default {
   name: 'TodoList',
+  props: ['title'],
+  beforeMount () {
+  },
   methods: {
-    test () {
+    ...todoStoreHelper.mapMutations([
+      'getTodoStore'
+    ]),
+    async getTodo () {
+      const result = await this.$DB_GET(this.title)
+      console.log(result)
+      this.getTodoStore(result)
       this.$router.push('/add-todo')
     }
   }

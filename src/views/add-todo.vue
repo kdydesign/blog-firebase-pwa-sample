@@ -7,12 +7,12 @@
 
 <template>
   <div class="q-pa-xl">
-    <div class="row justify-center q-gutter-md">
+    <div class="row justify-center q-gutter-md q-pb-md">
       <q-input
         v-model="name"
         outlined
         label="Todo Name"
-        class="fit"
+        class="col"
         @keydown.enter="addTodo"
       >
         <template #append>
@@ -26,7 +26,18 @@
         </template>
       </q-input>
 
-      <div class="col fit">
+      <q-btn
+        label="저장"
+        color="blue"
+        class="col-1"
+        @click="saveTodo"
+      />
+    </div>
+
+    <div class="col fit">
+      <q-scroll-area
+        style="width:100%;height:500px"
+      >
         <div
           v-for="(c, i) in todoList"
           :key="i"
@@ -46,12 +57,16 @@
             @click="removeTodo(i)"
           />
         </div>
-      </div>
+      </q-scroll-area>
     </div>
   </div>
 </template>
 
 <script>
+import { createNamespacedHelpers } from 'vuex'
+
+const todoStoreHelper = createNamespacedHelpers('todoStore')
+
 export default {
   name: 'AddTodo',
   data () {
@@ -59,6 +74,16 @@ export default {
       name: void 0,
       check: false,
       todoList: []
+    }
+  },
+  computed: {
+    ...todoStoreHelper.mapState([
+      'todo'
+    ])
+  },
+  beforeMount () {
+    if (this.todo) {
+      this.todoList = this.todo
     }
   },
   methods: {
@@ -82,6 +107,9 @@ export default {
     },
     removeTodo (idx) {
       this.todoList.splice(idx, 1)
+    },
+    saveTodo () {
+      this.$DB_SAVE(this.todoList)
     }
   }
 }
@@ -92,6 +120,7 @@ export default {
   display: flex
   flex-direction: row
   flex-wrap: nowrap
+
   &:hover
     transition: 0.5s
     background: rgba(245, 245, 245, 0.68)

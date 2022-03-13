@@ -8,13 +8,13 @@
 <template>
   <div class="full-width row justify-center">
     <div style="width: 1000px">
-      <router-view/>
+      <router-view />
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'layout-view'
+  name: 'LayoutView'
 }
 </script>
