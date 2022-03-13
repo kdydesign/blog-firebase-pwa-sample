@@ -7,12 +7,15 @@ const state = {
 // mutations
 const mutations = {
   // 초기화
+  resetTodo (state) {
+    state.todo = void 0
+  },
+
   saveTodoList (state, list) {
     state.todoList = list
   },
 
   getTodoStore (state, result) {
-    console.log('-> ', result)
     state.todo = result
   }
 }

@@ -1,8 +1,5 @@
 <!--
-  untitle
-
-  @since 2022-03-03
-  @author kdydesign.kim
+  추가화면
 -->
 
 <template>
@@ -29,8 +26,20 @@
       <q-btn
         label="저장"
         color="blue"
-        class="col-1"
         @click="saveTodo"
+      />
+
+      <q-file
+        ref="file"
+        v-model="files"
+        label="Pick files"
+        style="display:none"
+      />
+
+      <q-btn
+        color="blue"
+        icon="image"
+        @click="$refs.file.pickFiles()"
       />
     </div>
 
@@ -71,6 +80,7 @@ export default {
   name: 'AddTodo',
   data () {
     return {
+      files: void 0,
       name: void 0,
       check: false,
       todoList: []
@@ -109,7 +119,8 @@ export default {
       this.todoList.splice(idx, 1)
     },
     saveTodo () {
-      this.$DB_SAVE(this.todoList)
+      this.$SAVE_STORAGE(this.files)
+      this.$DB_SAVE(this.todoList, this.files.name)
     }
   }
 }

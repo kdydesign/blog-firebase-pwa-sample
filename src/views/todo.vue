@@ -1,8 +1,5 @@
 <!--
-  untitle
-
-  @since 2022-03-03
-  @author kdydesign.kim
+  초기화면
 -->
 
 <template>
@@ -11,7 +8,7 @@
       label="추가"
       color="blue"
       class="q-ma-sm"
-      @click="$router.push('/add-todo')"
+      @click="addTodo"
     />
 
     <div class="row q-col-gutter-md">
@@ -49,13 +46,18 @@ export default {
   },
   async beforeMount () {
     const list = await this.$DB_GET_LIST()
-
+    console.log(list)
     this.saveTodoList(list)
   },
   methods: {
     ...todoStoreHelper.mapMutations([
+      'resetTodo',
       'saveTodoList'
-    ])
+    ]),
+    addTodo () {
+      this.resetTodo()
+      this.$router.push('/add-todo')
+    }
   }
 }
 </script>

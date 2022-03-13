@@ -1,8 +1,5 @@
 <!--
-  untitle
-
-  @since 2022-03-03
-  @author kdydesign.kim
+  목록
 -->
 
 <template>
@@ -10,8 +7,10 @@
     class="q-ma-sm"
     @click="getTodo"
   >
-    <img src="https://cdn.quasar.dev/img/mountains.jpg">
-
+    <q-img
+      :src="thumb"
+      :ratio="4/3"
+    />
     <q-card-section>
       <div class="text-subtitle2">
         {{ title }}
@@ -28,7 +27,16 @@ const todoStoreHelper = createNamespacedHelpers('todoStore')
 export default {
   name: 'TodoList',
   props: ['title'],
-  beforeMount () {
+  data () {
+    return {
+      thumb: void 0
+    }
+  },
+  async beforeMount () {
+    const result = await this.$DB_GET(this.title)
+
+    console.log('-. ', result)
+    this.thumb = await this.$GET_STORAGE(result.thumb)
   },
   methods: {
     ...todoStoreHelper.mapMutations([
@@ -38,6 +46,7 @@ export default {
       const result = await this.$DB_GET(this.title)
       console.log(result)
       this.getTodoStore(result)
+
       this.$router.push('/add-todo')
     }
   }
